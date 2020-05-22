@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sample2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            console.log($("p.first").html());
+            console.log($("p.second").html());
+            
+            $("p.first").html("<strong>太字にしました</strong>");
+            console.log($("p.first").html());
+            console.log($("p.second").html());
+
+            $("p.second").html($('p.first').html());
+            console.log($("p.first").html());
+            console.log($("p.second").html());
+        });
+    </script>
+</head>
+<body>
+    <p class="first">変更前</p>
+    <p class="second">変更後</p>
+</body>
+</html>
