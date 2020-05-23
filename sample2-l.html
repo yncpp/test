@@ -3,25 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sample変更</title>
+    <title>HTMLの追加</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(function(){
-            console.log($("p.first").html());
-            console.log($("p.second").html());
-            
-            $("p.first").html("<strong>太字にしました</strong>");
-            console.log($("p.first").html());
-            console.log($("p.second").html());
 
-            $("p.second").html($('p.first').html());
-            console.log($("p.first").html());
-            console.log($("p.second").html());
+            //// HTML要素を挿入する
+            // .first内の先頭に挿入
+            $("p.first").prepend("<strong>ファーストの頭に挿入</storong>");
+            // .second内の後ろに挿入
+            $("p.second").append("<strong>セカンドの最後に挿入</strong>");
+            // .first要素の前にh1を挿を入
+            $("p.first").before("<h1>☆☆☆☆を追加</h1>");
+            // .first要素の後ろにh2を挿入
+            $("p.first").after("<h2>★★★★を追加</h2>");
+
+            //// HTML要素を移動する
+            // .first内の先頭に「三番目」を移動
+            $(".third").prependTo(".first");
+            // .second内の最後に「四番目」を移動
+            $(".fourth").appendTo(".second");
+            // h1の前に.fifthを移動
+            $(".fifth").insertBefore(".first");
+            // h1の後ろに.sixthを移動
+            $(".sixth").insertAfter(".first");
+
+            ////　他のHTML要素で包む
+            // .firstを<em>で包む
+            $(".first").wrap("<em></em>");
+            // 各.sampleごとにp要素で包まれる
+            $(".sample").wrap("<p></p>");
+            // span要素をまとめてp要素で包む。間の要素は追い出される
+            $(".sample").wrapAll("<p></p>");
+            // .seventhの中身をstrongで包む
+            $(".seventh").wrapInner("<strong></strong>");
+
+            //// 親要素を取り除く
+            $(".eighth").unwrap();
+
+            ////　要素の置き換え
+            $(".nineth").replaceWith("<h2>replaceWithによって指定要素のp自体がh2に置き換えられました</h2>");
+            $(".ten").html("<em>.htmlは要素の中身にhtmlタグを含めて変更できます。指定要素自体は置換されません</em>");
+            $(".eleven").text("<em>.textは要素の中身にhtmlを含めることはできません</em>");
+
+            //// 要素の削除
+            $(".twelve strong").remove();
+
+            //// 属性値の変更と取得
+            // .attrで属性名と属性値を指定して、属性値を変更する
+            $(".thirteen a").attr("href", "https://yahoo.co.jp");
+            // .attrで属性名のみを指定して現在の属性値を取得する
+            $(".fourteen").text("現在のURLは" +$(".thirty a").attr("href") + "です");
+            $(".fifteen a").removeAttr("href");
+
+            //// class属性の追加と削除
+            $(".sixteen").addClass("red");
+            $(".seventeen").removeClass("blue");
+
+            //// CSSの制御
+            // cssのプロパティを追加
+            $(".eighteen").css("color", "green");
+            // 複数プロパティをまとめて指定
+            $(".nineteen").css({
+                "color": "hotpink",
+                "border": "3px double orange",
+                "letter-spacing": "1em",
+                "display": "inline-block"
+            });
+            // cssの値を取得
+            $(".twenty span").text($(".nineteen").css("color"));
+
+            //// メソッドチェーン
+            $(".twenty-one").prepend("<em class='red'>☆prepend☆</em>")
+                            .append("<em class='blue'>☆apend☆</em>");
+
         });
     </script>
+    <style>
+        .red {
+            color: red;
+        }
+        .blue {
+            color: blue;
+        }
+    </style>
 </head>
 <body>
-    <p class="first">変更前</p>
-    <p class="second">変更後</p>
+    <p class="first">これはファースト</p>
+    <p class="second">これはセカンド</p>
+
+    <strong class="third">「三番目」</strong>
+    <strong class="fourth">「四番目」</strong>
+
+    <p class="fifth">●これをファーストの前に移動する●</p>
+    <p class="sixth">●これをファーストの後ろに移動する●</p>
+
+    <span class="sample">span1</span><em>emです</em><span class="sample">span2</span>
+
+    <p class="seventh">このp要素の中身をstrongで包みます</p>
+
+    <h2><p class="eighth">このp要素はh2で包まれていました</p></h2>
+
+    <p class="nineth">この要素は.replaceWithによって置き換えられていません</p>
+    <p class="ten">この要素は.htmlによって変更されていません</p>
+    <p class="eleven">この要素は.textによって変更されていません</p>
+
+    <p class="twelve"><strong>削除予定</strong>このpからstrong要素が取り除かれました</p>
+
+    <p class="thirteen"><a href="https://google.com" target="_blank">このリンクは元はgoogleでした</a></p>
+    <p class="fourteen">上のリンク先はヤフーです</p>
+    <p class="fifteen"><a href="https://google.com"></a></p>
+
+    <p class="sixteen">この文章はaddClassにより赤色に変更されました</p>
+    <p class="seventeen blue">この文章は青色でしたがremoveClassによりcolorが取り除かれました</p>
+
+    <p class="eighteen">この文章は.cssによってcolorが設定されました</p>
+    <p class="nineteen">複数のcssプロパティを設定することも可能です</p>
+    <p class="twenty">上記のcolorの値は<span>???</span>です</p>
+
+    <p class="twenty-one">前後に星を追加します</p>
 </body>
 </html>
