@@ -5,12 +5,23 @@
 		<title>sample14</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 		<script>
-$(function(){
-	$("a").on("click",function(){
-		$("img").attr("src",$(this).attr("href")).attr("alt",$(this).text());
+// $(function(){
+// 	$("a").on("click",function(){
+// 		$("img").attr("src",$(this).attr("href")).attr("alt",$(this).text());
+// 		return false;
+// 	});
+// });
+
+$(function() {
+	// a要素をクリックしたときに
+	$("a").on("click", function() {
+		// img要素のsrc属性とalt属性を、クリックした要素の属性値を取得して置き換える
+		$("img").attr("src", $(this).attr("href")).attr("alt", $(this).text());
+		// ブラウザが標準で提供している処理を中断する(今回は「aをクリックでページ遷移」を中断)
 		return false;
 	});
 });
+
 		</script>
 	</head>
 	<body>

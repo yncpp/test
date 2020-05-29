@@ -5,14 +5,28 @@
 		<title>sample16</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 		<script>
-$(function(){
-	$("a").click(function(){
-		$("img").attr("src",$(this).attr("href")).attr("alt",$(this).text());
+// $(function(){
+	// HTMLを読み込んだ時点でa要素にはイベント処理が設定済みのため、
+	// 後から追加したa要素はイベント発生要素として設定されない
+// 	$("a").click(function(){
+// 		$("img").attr("src",$(this).attr("href")).attr("alt",$(this).text());
+// 		return false;
+// 	});
+// 	$("button").click(function(){
+// 		$("ul").append("<li><a href='building.jpg'>建物</a></li>");
+// 	});
+// });
+
+$(function() {
+	// ul要素内のa要素がクリックされたときにイベントが発生する要素かどうかを判断
+	$("ul").on("click", "a", function() {
+		$("img").attr("src", $(this).attr("href")).attr("alt", $(this).text());
 		return false;
 	});
-	$("button").click(function(){
+	$("button").click(function() {
+		// ul要素内の最後に挿入
 		$("ul").append("<li><a href='building.jpg'>建物</a></li>");
-	});
+	})
 });
 		</script>
 	</head>
