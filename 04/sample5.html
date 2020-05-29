@@ -3,19 +3,39 @@
 	<head>
 		<meta charset="utf-8">
 		<title>sample5</title>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script>
-$(function(){
-	$("input").val("入力してください").css("color","#CCC").one("focus",function(){
-		$(this).val("").css("color","#000");
-	}).blur(function(){
-		if($(this).val()==""){
-			$(this).val("入力してください").css("color","#CCC").one("focus",function(){
-				$(this).val("").css("color","#000");
+// $(function(){
+// 	$("input").val("入力してください").css("color","#CCC").one("focus",function(){
+// 		$(this).val("").css("color","#000");
+// 	}).blur(function(){
+// 		if($(this).val()==""){
+// 			$(this).val("入力してください").css("color","#CCC").one("focus",function(){
+// 				$(this).val("").css("color","#000");
+// 			});
+// 		}
+// 	});
+// });
+
+		$(function() {
+			// inputの値を「入力してください」に置換して文字色を#cccに設定し
+			// フォーカスされたら（イベント）一度だけinputの値を空にして文字色を#333に変更し
+			$("input").val("入力してください").css("color", "#ccc").one("focus", function() {
+				$(this).val("").css("color", "#333");
+				// フォーカスが外れたら（focusの処理は一度だけだがblurの処理はフォーカスが外れるたびに実行される）
+				// （oneの引数じゃなくメソッドチェーンなので）
+			}).blur(function() {
+				// もしinputの中身が空であった場合、値を「入力してくださーい」に置換して文字色をredに変更し、
+				// フォーカスが外れたときは一度だけinputの値を空にして文字色を#333に変更する
+				// inputの値が空欄でなかったら何もしない
+				if($(this).val() == "") {
+					$(this).val("入力してくださーい").css("color", "red").one("focus", function() {
+						$(this).val("").css("color", "#333");
+					});
+				}
 			});
-		}
-	});
-});
+		});
+
 		</script>
 	</head>
 	<body>

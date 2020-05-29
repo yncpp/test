@@ -5,15 +5,26 @@
 		<title>sample2</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 		<script>
-$(function(){
-	$("button").click(function(){
-		$("input").val("");
-	});
-});
+// $(function(){
+// 	$("button").click(function(){
+// 		$("input").val("");
+// 	});
+// });
+
+		$(function(){
+			// ボタンをクリックしたら
+			$("button").click(function() {
+				console.log($("input").val());
+				// inputに入力された値を空にする
+				$("input").val("");
+			})
+		});
 		</script>
 	</head>
 	<body>
-		お名前：<input type="text"><button>クリア</button>
+
+		<p>お名前：<input type="text"></p>
+		<button>クリア</button>
 		
 	</body>
 </html>
