@@ -5,21 +5,81 @@
 		<title>sample7</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 		<script>
-$(function(){
-	$("form").submit(function(){
-		if($("input[name='name']").val()==""){
-			$("input[name='name']").css("border","1px solid red").after("<span>お名前を入力してください</span>");
-			$("span").css({
-				"color":"red",
-				"font-weight":"bold"
+// $(function(){
+// 	$("form").submit(function(){
+// 		if($("input[name='name']").val()==""){
+// 			$("input[name='name']").css("border","1px solid red").after("<span>お名前を入力してください</span>");
+// 			$("span").css({
+// 				"color":"red",
+// 				"font-weight":"bold"
+// 			});
+// 			return false;
+// 		}
+// 	});
+// });
+
+		$(function() {
+			// フォームの送信ボタンがクリックされたらイベント発生
+			$("form").submit(function() {
+				// input[name="name"]の値が空の場合に
+				if($("input[name='name']").val()=="") {
+					// input[name="name"]のCSSを変更して<span>要素を挿入
+					$("input[name='name']").css("border", "1px solid orange").after("<span>※お名前を入力してください</span>");
+					// 挿入した<span>要素のCSSを設定
+					$("span").css({
+						"color": "red",
+						"font-weight":"bold" 
+					});
+					// 送信ボタンクリック時のブラウザの機能を無効にする
+					return false;
+				}
 			});
-			return false;
-		}
-	});
-});
+		});
 		</script>
 	</head>
 	<body>
+		<!-- 送信ボタン(type属性がsubmit)の要素がクリックされると、
+		ブラウザは送信ボタンを包んでいるform要素内の情報をaction属性で設定されているURLに送信する -->
+		<form action="check.html" method="post">
+			<dl>
+				<dt>お名前<em>(必須)</em></dt>
+				<dd><input type="text" name="name"></dd>
+				<dt>性別</dt>
+				<dd>
+					<input type="radio" name="gender" value="男性" id="gender_man">
+					<label for="gender_man">男性</label>
+					<input type="radio" name="gender" value="女性" id="gender_woman">
+					<label for="gender_woman">女性</label>
+				</dd>
+				<dt>年齢</dt>
+				<dd>
+					<select name="age">
+						<option>選択してください</option>
+						<option value="10代">10代</option>
+						<option value="20代">20代</option>
+						<option value="30代">30代</option>
+						<option value="40代">40代以上</option>
+					</select>
+				</dd>
+				<dt>スキル</dt>
+				<dd>
+					<input type="checkbox" name="html" value="HTML" id="html">
+					<label for="html">HTML</label>
+					<input type="checkbox" name="css" value="CSS" id="css">
+					<label for="css">CSS</label>
+					<input type="checkbox" name="javascript" value="JavaScript" id="javascript">
+					<label for="javascript">JavaScript</label>
+					<input type="checkbox" name="php" value="PHP" id="php">
+					<label for="php">PHP</label>
+				</dd>
+				<dt>コメント</dt>
+				<dd>
+					<textarea name="textarea"></textarea>
+				</dd>
+			</dl>
+			<input type="submit" value="送信">
+		</form>
+
 		<form action="check.html" method="post">
 			<dl>
 				<dt>お名前<em>(必須)</em></dt>

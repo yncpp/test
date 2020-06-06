@@ -3,29 +3,36 @@
 	<head>
 		<meta charset="utf-8">
 		<title>sample8</title>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 		<script>
-$(function(){
-	$("form").submit(function(){
-		if($("input[name='name']").val()==""){
-			if($("span").css("font-weight") != "bold"){
-				$("input[name='name']").css("border","1px solid red").after("<span>お名前を入力してください</span>");
-				$("span").css({
-					"color":"red",
-					"font-weight":"bold"
+			$(function(){
+				$("form").submit(function(){
+					// お名前が空欄だったら
+					if($("#name").val() == ""){
+						// spanにメッセージ表示してerrorクラスを追加
+						$("#name+span").text("名前は必須です").addClass("error");
+
+						// 送信を行わない（ブラウザのsubmit機能を停止）
+						return false;
+					}
 				});
-			}
-			return false;
-		}
-	});
-});
+			});
 		</script>
+
+		<style>
+			.error {
+				font-weight: bold;
+				color: red;
+			}
+		</style>
 	</head>
 	<body>
+
 		<form action="check.html" method="post">
 			<dl>
 				<dt>お名前<em>(必須)</em></dt>
-				<dd><input type="text" name="name"></dd>
+				<dd><input type="text" name="name" id="name"><span></span></dd>
 				<dt>性別</dt>
 				<dd>
 					<input type="radio" name="gender" value="男性" id="gender_man">
