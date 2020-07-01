@@ -13,14 +13,14 @@ div{
 }
 		</style>
 		<script>
-$(function(){
-	$("button#show").click(function(){
-		$("div").show("slow");
-	});
-	$("button#hide").click(function(){
-		$("div").hide("slow");
-	});
-});
+			$(function() {
+				$("#show").on("click", function() {
+					$("div").show(2000);
+				});
+				$("#hide").on("click", function() {
+					$("div").hide(2000);
+				})
+			})
 		</script>
 	</head>
 	<body>

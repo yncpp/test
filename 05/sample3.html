@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html lang="ja">
-	<head>
-		<meta charset="utf-8">
-		<title>sample3</title>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-		<script>
-$(function(){
-	$.ajax({
-		url: 'sample3.xml',
-		dataType: 'xml',
-		success : function(data){
-			$("item",data).each(function(){
-				$("dl").append("<dt><a href='"+$("link",this).text()+"'>"+$("title",this).text()+"</a></dt><dd>"+$("description",this).text()+"</dd>");
-			});
-		}
+<head>
+	<meta charset="utf-8">
+	<title>sample3</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script>
+// $(function(){
+// $.ajax({
+// 	url: 'sample3.xml',
+// 	dataType: 'xml',
+// 	success : function(data){
+// 		$("item",data).each(function(){
+// 			$("dl").append("<dt><a href='"+$("link",this).text()+"'>"+$("title",this).text()+"</a></dt><dd>"+$("description",this).text()+"</dd>");
+// 		});
+// 	}
+// });
+// });
+
+	$(function() {
+		// sample3.xmlの内容を取得
+		$.ajax({
+			url: "sample3.xml",
+			dateType: "xml",
+			success: function(data) {
+				// sample3.xmlのitem要素の内容を取得して処理を繰り返す
+				$("item", data).each(function() {
+					// dl要素に取得した内容を挿入
+					// thisは現在処理中の要素を指す
+					$("dl").append("<dt><a href='" + $("link", this).text() + "'>"
+												+ $("title", this).text() + "</a></dt><dd>"
+												+ $("description", this).text()	+ "</dd>");
+				});
+			}
+		});
 	});
-});
-		</script>
-	</head>
+	</script>
+</head>
 	<body>
 		<dl></dl>
 	</body>

@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>sample1</title>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<style>
 div{
 	width:300px;
@@ -13,11 +13,11 @@ div{
 }
 		</style>
 		<script>
-$(function(){
-	$("button").click(function(){
-		$("div").show("slow");
-	});
-});
+		$(function() {
+			$("button").click(function() {
+				$("div").show(500);
+			});
+		});
 		</script>
 	</head>
 	<body>

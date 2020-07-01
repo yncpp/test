@@ -5,11 +5,17 @@
 		<title>sample4</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 		<script>
-$(function(){
-	$("table tr").each(function(){
-		$(this).html("<td>"+$("th",this).text()+"は"+$("td",this).text()+"</td>");
-	});
-});
+// $(function(){
+// 	$("table tr").each(function(){
+// 		$(this).html("<td>"+$("th",this).text()+"は"+$("td",this).text()+"</td>");
+// 	});
+// });
+
+		$(function() {
+			$("table tr").each(function() {
+				$(this).html("<td>" + $("th", this).text() + "：" + $("td", this).text() + "</td>");
+			});
+		});
 		</script>
 	</head>
 	<body>
